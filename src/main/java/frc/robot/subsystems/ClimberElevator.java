@@ -16,41 +16,47 @@ import frc.robot.Constants.ClimberElevatorConstants;
 
 public class ClimberElevator extends SubsystemBase {
   private CANSparkMax m_elevator1 = new CANSparkMax(CAN_IDs.climber1_ID, MotorType.kBrushless);
-  private CANSparkMax m_elevator2 = new CANSparkMax(CAN_IDs.climber2_ID, MotorType.kBrushless);
+  //private CANSparkMax m_elevator2 = new CANSparkMax(CAN_IDs.climber2_ID, MotorType.kBrushless);
   private RelativeEncoder m_encoder = m_elevator1.getEncoder();
   /** Creates a new ClimberElevator. */
   public ClimberElevator() {
+    System.out.print("construct the climber\n");
+
     m_elevator1.restoreFactoryDefaults();
     m_elevator1.setIdleMode(IdleMode.kBrake);
     m_elevator1.setSmartCurrentLimit(80);
 
-    m_elevator2.restoreFactoryDefaults();
-    m_elevator2.setIdleMode(IdleMode.kBrake);
-    m_elevator2.setSmartCurrentLimit(80);
+    // m_elevator2.restoreFactoryDefaults();
+    // m_elevator2.setIdleMode(IdleMode.kBrake);
+    // m_elevator2.setSmartCurrentLimit(80);
 
-    m_elevator2.follow(m_elevator1, true);
+    // m_elevator2.follow(m_elevator1, false);
 
-    m_elevator1.enableSoftLimit(SoftLimitDirection.kForward, true);
-    m_elevator1.enableSoftLimit(SoftLimitDirection.kReverse, true);
-    m_elevator1.setSoftLimit(SoftLimitDirection.kForward, ClimberElevatorConstants.kForwardSoftlimit);
-    m_elevator1.setSoftLimit(SoftLimitDirection.kReverse, ClimberElevatorConstants.kReverseSoftLimit);
+    // m_elevator1.enableSoftLimit(SoftLimitDirection.kForward, true);
+    // m_elevator1.enableSoftLimit(SoftLimitDirection.kReverse, true);
+    // m_elevator1.setSoftLimit(SoftLimitDirection.kForward, ClimberElevatorConstants.kForwardSoftlimit);
+    // m_elevator1.setSoftLimit(SoftLimitDirection.kReverse, ClimberElevatorConstants.kReverseSoftLimit);
 
   }
 
   public void raiseClimberElevator() {
+    
     if (m_encoder.getPosition() <= ClimberElevatorConstants.kUpPosNeoRotations) {
       m_elevator1.set(ClimberElevatorConstants.elevatorMotorUpSpeed);
-    } else {
+    } 
+    else {
       m_elevator1.set(0.0);
     }
   }
 
   public void lowerClimberElevator() {
-    if (m_encoder.getPosition() >= ClimberElevatorConstants.kDownPosNeoRotations) {
-      m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);
-    } else {
-      m_elevator1.set(0.0);
-    }
+     m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);
+
+    // if (m_encoder.getPosition() >= ClimberElevatorConstants.kDownPosNeoRotations) {
+    //   m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);
+    // } else {
+    //   m_elevator1.set(0.0);
+    // }
   }
 
   public void stopClimberElevator() {

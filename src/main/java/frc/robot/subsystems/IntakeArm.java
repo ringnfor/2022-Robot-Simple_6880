@@ -35,6 +35,7 @@ public class IntakeArm extends SubsystemBase {
   /** Creates a new IntakeArm. */
   public IntakeArm(Supplier<Double> leftTriggerSupplier,
       Supplier<Double> rightTriggerSupplier) {
+    System.out.print("constructing intake arm\n");
     m_leftTriggerAxisSupplier = leftTriggerSupplier;
     m_rightTriggerAxisSupplier = rightTriggerSupplier;
     m_intakeArm.restoreFactoryDefaults();

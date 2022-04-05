@@ -95,11 +95,11 @@ public class RobotContainer {
     new JoystickButton(m_xbox1, Button.kA.value)
       .whenPressed(() -> m_drive.toggleMaxOutput());
     
-    new JoystickButton(m_xbox1, Button.kX.value)
+    new JoystickButton(m_xbox1, Button.kRightBumper.value)
       .whenPressed(() -> m_elevator.raiseClimberElevator())
       .whenReleased(() -> m_elevator.stopClimberElevator());
     
-    new JoystickButton(m_xbox1, Button.kY.value)
+    new JoystickButton(m_xbox1, Button.kLeftBumper.value)
       .whenPressed(() -> m_elevator.lowerClimberElevator())
       .whenReleased(() -> m_elevator.stopClimberElevator());
   }

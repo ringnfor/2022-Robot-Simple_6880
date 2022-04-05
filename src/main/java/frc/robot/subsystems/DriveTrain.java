@@ -36,6 +36,7 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveTrain() {
+    System.out.print("constructing drive train\n");
     m_left1.restoreFactoryDefaults();
     m_left2.restoreFactoryDefaults();
     m_right1.restoreFactoryDefaults();
@@ -69,8 +70,8 @@ public class DriveTrain extends SubsystemBase {
   public void periodic() {
     // This method will be called once per scheduler run
     // Update the odometry in the periodic block
-    m_odometry.update(
-        m_gyro.getRotation2d(), m_leftEnc.getDistance(), m_rightEnc.getDistance());
+    // m_odometry.update(
+    //     m_gyro.getRotation2d(), m_leftEnc.getDistance(), m_rightEnc.getDistance());
   }
 
   /**
@@ -174,7 +175,7 @@ public class DriveTrain extends SubsystemBase {
       m_diffdrv.setMaxOutput(0.5);
       speed_mode = false;
     } else {
-      m_diffdrv.setMaxOutput(1);
+      m_diffdrv.setMaxOutput(0.75);
       speed_mode = true;
     }
 }

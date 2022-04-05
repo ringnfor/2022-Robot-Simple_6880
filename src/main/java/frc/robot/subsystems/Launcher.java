@@ -45,7 +45,8 @@ public class Launcher extends SubsystemBase {
     int povValue = m_povSupplier.get();
     if (povValue == 180) {
       launchHigh();
-    } else if (povValue == 0) {
+    } 
+    else if (povValue == 0) {
       launchLow();
     }
 
