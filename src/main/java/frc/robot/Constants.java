@@ -31,11 +31,11 @@ public final class Constants {
         public final static int climber2_ID = 32;
     }
     public final static class EncoderConstants {
-        public final static int[] leftEnc_ports = new int[]{2, 3};
+        public final static int[] leftEnc_ports = new int[]{0, 1};
         public final static boolean leftEnc_reversed = false;
-        public final static int[] rightEnc_ports = new int[]{4, 5};
+        public final static int[] rightEnc_ports = new int[]{2, 3};
         public final static boolean rightEnc_reversed = true;
-        public final static int[] intakeArmEnc_ports = new int[]{6,7};
+        public final static int[] intakeArmEnc_ports = new int[]{4,5};
         public final static boolean intakeArmEnc_reversed = false;
         public final static int[] climberEnc_ports = new int[]{8,9};
         public final static boolean climberEnc_reversed = false;
@@ -82,7 +82,7 @@ public final class Constants {
         private final static double _openedPosArmDegrees = -125; // Position of the Arm 1x1 tubing on the robot
         public final static double kClosedPosArmRad = Units.degreesToRadians(_closedPosArmDegrees);
         public final static double kOpenedPosArmRad = Units.degreesToRadians(_openedPosArmDegrees);
-        private final static double _gearRatio = (4*3*60/24); // 4:1 cartridge + 3:1 cartrdige + 60T:24T sprockets
+        private final static double _gearRatio = (5*4*60/24); // 5:1 cartridge + 4:1 cartrdige + 60T:24T sprockets
         // The following two values in terms of Neo motor shaft rotations
         public final static double kClosedPosNeoRotations = Units.degreesToRotations(_closedPosArmDegrees * _gearRatio);
         public final static double kOpenedPosNeoRotations = Units.degreesToRotations(_openedPosArmDegrees * _gearRatio);
@@ -128,7 +128,7 @@ public final class Constants {
 
         // The following fixed speeds are applicable only if not using the FeedForward or Feedback controllers
         // Note: Elevator uses constant force spring and there is no load so not much power is needed when moving up
-        public final static double elevatorMotorUpSpeed = 0.2; 
+        public final static double elevatorMotorUpSpeed = 0.4; 
         public final static double elevatorMotorDownSpeed = -0.75;
     }
 

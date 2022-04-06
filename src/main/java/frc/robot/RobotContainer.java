@@ -8,12 +8,15 @@ import static edu.wpi.first.wpilibj.XboxController.Button;
 
 
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.Constants.OIConstants;
+import frc.robot.commands.AutoBackupAndShoot;
+import frc.robot.commands.DriveDistance;
 import frc.robot.subsystems.ClimberElevator;
 import frc.robot.subsystems.DriveTrain;
 import frc.robot.subsystems.Indexer;
@@ -39,6 +42,8 @@ public class RobotContainer {
   private final Launcher m_launcher = new Launcher(() -> m_xbox2.getPOV());
   private final ClimberElevator m_elevator = new ClimberElevator();
   private final DriveTrain m_drive = new DriveTrain();
+  private final DriveDistance m_simpleAuto = new DriveDistance(Units.inchesToMeters(92), -0.4, m_drive);
+  private final AutoBackupAndShoot m_complexAuto = new AutoBackupAndShoot(m_drive, m_indexer, m_launcher, m_intakeArm);
 
   private final AutoCommands m_autoCommands = 
     new AutoCommands(m_drive, m_intakeWheels, m_intakeArm, m_indexer, m_launcher);
@@ -112,6 +117,8 @@ public class RobotContainer {
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
     // return m_autoCommand;
-    return m_autoCommands.getAutoCommand_1();
+    //return m_autoCommands.getAutoCommand_1();
+    //return m_simpleAuto;
+    return m_complexAuto;
   }
 }

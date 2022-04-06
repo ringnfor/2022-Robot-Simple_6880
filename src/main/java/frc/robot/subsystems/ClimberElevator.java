@@ -16,7 +16,7 @@ import frc.robot.Constants.ClimberElevatorConstants;
 
 public class ClimberElevator extends SubsystemBase {
   private CANSparkMax m_elevator1 = new CANSparkMax(CAN_IDs.climber1_ID, MotorType.kBrushless);
-  //private CANSparkMax m_elevator2 = new CANSparkMax(CAN_IDs.climber2_ID, MotorType.kBrushless);
+  private CANSparkMax m_elevator2 = new CANSparkMax(CAN_IDs.climber2_ID, MotorType.kBrushless);
   private RelativeEncoder m_encoder = m_elevator1.getEncoder();
   /** Creates a new ClimberElevator. */
   public ClimberElevator() {
@@ -24,13 +24,13 @@ public class ClimberElevator extends SubsystemBase {
 
     m_elevator1.restoreFactoryDefaults();
     m_elevator1.setIdleMode(IdleMode.kBrake);
-    m_elevator1.setSmartCurrentLimit(80);
+    m_elevator1.setSmartCurrentLimit(100);
 
-    // m_elevator2.restoreFactoryDefaults();
-    // m_elevator2.setIdleMode(IdleMode.kBrake);
-    // m_elevator2.setSmartCurrentLimit(80);
+    m_elevator2.restoreFactoryDefaults();
+    m_elevator2.setIdleMode(IdleMode.kBrake);
+    m_elevator2.setSmartCurrentLimit(80);
 
-    // m_elevator2.follow(m_elevator1, false);
+    m_elevator2.follow(m_elevator1, false);
 
     // m_elevator1.enableSoftLimit(SoftLimitDirection.kForward, true);
     // m_elevator1.enableSoftLimit(SoftLimitDirection.kReverse, true);
@@ -50,7 +50,7 @@ public class ClimberElevator extends SubsystemBase {
   }
 
   public void lowerClimberElevator() {
-     m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);
+      m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);
 
     // if (m_encoder.getPosition() >= ClimberElevatorConstants.kDownPosNeoRotations) {
     //   m_elevator1.set(ClimberElevatorConstants.elevatorMotorDownSpeed);

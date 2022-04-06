@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.SPI.Port;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CAN_IDs;
 import frc.robot.Constants.DriveTrainConstants;
@@ -36,7 +37,6 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new DriveSubsystem. */
   public DriveTrain() {
-    System.out.print("constructing drive train\n");
     m_left1.restoreFactoryDefaults();
     m_left2.restoreFactoryDefaults();
     m_right1.restoreFactoryDefaults();
@@ -53,8 +53,8 @@ public class DriveTrain extends SubsystemBase {
     m_rightEnc = new Encoder(EncoderConstants.rightEnc_ports[0], EncoderConstants.rightEnc_ports[1],
                       EncoderConstants.rightEnc_reversed, EncodingType.k4X);
     
-    m_leftEnc.setDistancePerPulse(DriveTrainConstants.kWheelCircumference_m / (EncoderConstants.revThroughboreEnc_PPR * 4));
-    m_rightEnc.setDistancePerPulse(DriveTrainConstants.kWheelCircumference_m / (EncoderConstants.revThroughboreEnc_PPR * 4));
+    m_leftEnc.setDistancePerPulse(DriveTrainConstants.kWheelCircumference_m / (EncoderConstants.revThroughboreEnc_PPR ));
+    m_rightEnc.setDistancePerPulse(DriveTrainConstants.kWheelCircumference_m / (EncoderConstants.revThroughboreEnc_PPR ));
 
     resetEncoders();
 
@@ -72,6 +72,9 @@ public class DriveTrain extends SubsystemBase {
     // Update the odometry in the periodic block
     // m_odometry.update(
     //     m_gyro.getRotation2d(), m_leftEnc.getDistance(), m_rightEnc.getDistance());
+    SmartDashboard.putNumber("Left encoder: ", m_leftEnc.getDistance());
+    SmartDashboard.putNumber("Right endoder:", m_rightEnc.getDistance());
+    SmartDashboard.putNumber("Yaw", m_gyro.getYaw());
   }
 
   /**

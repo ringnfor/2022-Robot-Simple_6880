@@ -91,4 +91,12 @@ public class IntakeArm extends SubsystemBase {
       return;
     }
   }
+
+  public double getArmPosition(){
+    return m_encoder.getPosition();
+  }
+
+  public void setPower(double power){
+    m_intakeArm.set(power);
+  }
 }
