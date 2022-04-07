@@ -8,9 +8,9 @@ package frc.robot.subsystems;
 import java.util.function.Supplier;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
+import com.revrobotics.RelativeEncoder;
 
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -68,7 +68,7 @@ public class Launcher extends SubsystemBase {
 
   public void unclogLauncher() {
     if(launchHeight) {m_launcher1.set(-LauncherConstants.launcherMotorHighSpeed / 2);}
-    else { m_launcher1.set(- LauncherConstants.launcherMotorLowSpeed / 2);}
+    else { m_launcher1.set(-LauncherConstants.launcherMotorLowSpeed / 2);}
   }
 
   public void doNothing(){}

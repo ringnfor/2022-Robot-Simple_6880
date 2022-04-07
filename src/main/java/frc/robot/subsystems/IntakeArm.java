@@ -7,20 +7,14 @@ package frc.robot.subsystems;
 import java.util.function.Supplier;
 
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
-import com.revrobotics.SparkMaxPIDController;
-import com.revrobotics.CANSparkMax.ControlType;
 import com.revrobotics.CANSparkMax.IdleMode;
 import com.revrobotics.CANSparkMax.SoftLimitDirection;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
-import com.revrobotics.SparkMaxPIDController.ArbFFUnits;
+import com.revrobotics.RelativeEncoder;
 
-import edu.wpi.first.math.controller.ArmFeedforward;
-import edu.wpi.first.math.trajectory.TrapezoidProfile;
-import edu.wpi.first.math.util.Units;
+import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants.CAN_IDs;
 import frc.robot.Constants.IntakeArmConstants;
-import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class IntakeArm extends SubsystemBase {
   public enum ArmState {OPENED, CLOSED};
@@ -35,7 +29,6 @@ public class IntakeArm extends SubsystemBase {
   /** Creates a new IntakeArm. */
   public IntakeArm(Supplier<Double> leftTriggerSupplier,
       Supplier<Double> rightTriggerSupplier) {
-    System.out.print("constructing intake arm\n");
     m_leftTriggerAxisSupplier = leftTriggerSupplier;
     m_rightTriggerAxisSupplier = rightTriggerSupplier;
     m_intakeArm.restoreFactoryDefaults();
@@ -76,14 +69,16 @@ public class IntakeArm extends SubsystemBase {
     if (m_rightTriggerAxisSupplier.get() > 0) {
       if (m_encoder.getPosition() <= IntakeArmConstants.kClosedPosNeoRotations) {
         m_intakeArm.set(IntakeArmConstants.armMotorClosingSpeed);
-      } else {
+      } 
+      else {
         m_intakeArm.set(0.0);
       }
       // closeArm();
     } else if (m_leftTriggerAxisSupplier.get() > 0) {
       if (m_encoder.getPosition() >= IntakeArmConstants.kOpenedPosNeoRotations) {
         m_intakeArm.set(IntakeArmConstants.armMotorOpeningSpeed);
-      } else {
+      } 
+      else {
         m_intakeArm.set(0.0);
       }
       // openArm();

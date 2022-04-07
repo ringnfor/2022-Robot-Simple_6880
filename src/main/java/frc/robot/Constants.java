@@ -79,7 +79,7 @@ public final class Constants {
     public final static class IntakeArmConstants {
         // Arm Positions 
         private final static double _closedPosArmDegrees = 0; // Position of the Arm 1x1 tubing on the robot
-        private final static double _openedPosArmDegrees = -125; // Position of the Arm 1x1 tubing on the robot
+        private final static double _openedPosArmDegrees = -105; // Position of the Arm 1x1 tubing on the robot
         public final static double kClosedPosArmRad = Units.degreesToRadians(_closedPosArmDegrees);
         public final static double kOpenedPosArmRad = Units.degreesToRadians(_openedPosArmDegrees);
         private final static double _gearRatio = (5*4*60/24); // 5:1 cartridge + 4:1 cartrdige + 60T:24T sprockets
